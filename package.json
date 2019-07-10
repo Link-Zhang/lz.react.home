@@ -2,16 +2,37 @@
   "name": "lz.react.home",
   "version": "0.1.0",
   "private": true,
+  "author": "Link Zhang <Link.Zhang.0@gmail.com>",
+  "license": "MIT",
   "dependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "antd": "3.20.1",
+    "babel-plugin-import": "1.12.0",
+    "connected-react-router": "6.5.0",
+    "customize-cra": "0.2.14",
+    "history": "4.9.0",
+    "less": "3.9.0",
+    "less-loader": "5.0.0",
+    "react": "16.8.6",
+    "react-app-rewired": "2.1.3",
+    "react-dom": "16.8.6",
+    "react-redux": "7.1.0",
+    "react-router": "4.4.0-beta.8",
+    "react-router-dom": "4.4.0-beta.8",
+    "react-scripts": "3.0.1",
+    "redux": "4.0.3",
+    "redux-devtools-extension": "2.13.8",
+    "redux-logger": "3.0.6",
+    "restify": "7.7.0",
+    "restify-cors-middleware": "1.1.1",
+    "superagent": "5.1.0",
+    "superagent-promise": "1.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject",
+    "mock": "node mock/server.js"
   },
   "eslintConfig": {
     "extends": "react-app"
