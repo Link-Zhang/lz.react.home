@@ -1,6 +1,6 @@
 import React from 'react';
-import globalConfig from '../../config';
 import './index.css';
+import globalConfig from '../../config';
 
 class Logo extends React.PureComponent {
     render() {

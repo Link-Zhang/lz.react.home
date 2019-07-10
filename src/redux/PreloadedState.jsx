@@ -1,9 +1,7 @@
-import App from '../aircs/App';
-import Sidebar from '../aircs/Siderbar';
-import User from '../aircs/User';
+import Side from '../acirs/Side';
+import User from '../acirs/User';
 
 export default {
-    App: App.initState,
-    Sidebar: Sidebar.initState,
+    Side: Side.initState,
     User: User.initState,
 };

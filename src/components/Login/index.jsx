@@ -1,12 +1,12 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {loginSuccessCreator} from '../../reduxOld/User';
+import {connect} from 'react-redux';
 import {Button, Form, Icon, Input, Checkbox, message} from 'antd';
-// import 'antd/dist/antd.css';
 import './index.css';
 import globalConfig from '../../config';
 import ajax from '../../utils/ajax';
+import {loginSuccessActionCreator} from '../../acirs/User';
+
 
 class Login extends React.PureComponent {
     emptyUsername = () => {
@@ -29,12 +29,14 @@ class Login extends React.PureComponent {
             if (res.success) {
                 message.destroy();
                 message.success('登录成功', 1);
+                // console.log("1231");
                 this.props.handleLoginSuccess(res.data);
             } else {
                 message.destroy();
                 message.error('登录失败: 用户或密码错误');
             }
         } catch (exception) {
+            console.log(exception);
             this.props.form.setFieldsValue({
                 password: ''
             });
@@ -106,7 +108,7 @@ class Login extends React.PureComponent {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        handleLoginSuccess: bindActionCreators(loginSuccessCreator, dispatch),
+        handleLoginSuccess: bindActionCreators(loginSuccessActionCreator, dispatch),
     };
 };
 

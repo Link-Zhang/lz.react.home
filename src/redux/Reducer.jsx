@@ -1,12 +1,10 @@
 import {combineReducers} from 'redux';
 import {connectRouter} from 'connected-react-router';
-import App from '../aircs/App';
-import Sidebar from '../aircs/Siderbar';
-import User from '../aircs/User';
+import Side from '../acirs/Side';
+import User from '../acirs/User';
 
 export default (history) => combineReducers({
     router: connectRouter(history),
-    App: App.reducer,
-    Sidebar: Sidebar.reducer,
+    Side: Side.reducer,
     User: User.reducer,
 });

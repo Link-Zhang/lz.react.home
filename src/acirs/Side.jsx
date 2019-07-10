@@ -1,14 +1,19 @@
-export const action = {
-    SIDEBAR_COLLAPSE: 'SIDEBAR_COLLAPSE'
+import {sideConstants} from '../redux/ActionTypes';
+
+// Action Creator
+export const sideCollapseActionCreator = () => {
+    return {type: sideConstants.COLLAPSE};
 };
 
+// Init state
 const initState = {
     collapse: false,
 };
 
+// Reducer
 const reducer = (state = initState, action = {}) => {
     switch (action.type) {
-        case action.SIDEBAR_COLLAPSE:
+        case sideConstants.COLLAPSE:
             return {...state, collapse: !state.collapse};
         default:
             return state;
@@ -17,6 +22,3 @@ const reducer = (state = initState, action = {}) => {
 
 export default {initState, reducer};
 
-export const siderbarCollapseActionCreator = () => {
-    return {type: action.SIDEBAR_COLLAPSE};
-};

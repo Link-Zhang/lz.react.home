@@ -15,6 +15,17 @@ const tokenPlugin = req => {
     }
 };
 
+const Auth = {
+    current: () =>
+        requests.get('/user'),
+    login: (email, password) =>
+        requests.post('/users/login', {user: {email, password}}),
+    register: (username, email, password) =>
+        requests.post('/users', {user: {username, email, password}}),
+    save: user =>
+        requests.put('/user', {user})
+};
+
 const requests = {
     del: url =>
         superAgent.del(`${API_ROOT}${url}`).use(tokenPlugin).then(responseBody),
@@ -27,6 +38,7 @@ const requests = {
 };
 
 export default {
+    Auth,
     setToken: _token => {
         token = _token;
     }

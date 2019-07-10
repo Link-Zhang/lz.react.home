@@ -1,17 +1,16 @@
 import React from 'react';
+import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {Layout, Menu, Icon} from 'antd';
-// import 'antd/dist/antd.css';
 import Logo from '../Logo'
-import {bindActionCreators} from 'redux';
-import {sidebarCollapseCreator} from '../../reduxOld/Sidebar';
+import {sideCollapseActionCreator} from '../../acirs/Side';
 import sidebarMenu from '../../menu';
 
 const {Sider} = Layout;
 const {SubMenu} = Menu;
 
-class Sidebar extends React.PureComponent {
+class Side extends React.PureComponent {
     static translateMenuItem(object, path) {
         const parentPath = path.join('/');
         return (
@@ -34,7 +33,7 @@ class Sidebar extends React.PureComponent {
                 const l2Menu = l1.child.map((l2) => {
                     // 2级菜单
                     pathStack.push(l2.key);
-                    const tmp = Sidebar.translateMenuItem(l2, pathStack);
+                    const tmp = Side.translateMenuItem(l2, pathStack);
                     pathStack.pop();
                     return tmp;
                 });
@@ -54,7 +53,7 @@ class Sidebar extends React.PureComponent {
                 if (fistItem.length === 0) {
                     fistItem.push(l1.key);
                 }
-                const tmp = Sidebar.translateMenuItem(l1, pathStack);
+                const tmp = Side.translateMenuItem(l1, pathStack);
                 pathStack.pop();
                 return tmp;
             }
@@ -77,15 +76,15 @@ class Sidebar extends React.PureComponent {
 
 const mapStateToProps = (state) => {
     return {
-        collapse: state.Sidebar.collapse
+        collapse: state.Side.collapse
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        handleClickCollapse: bindActionCreators(sidebarCollapseCreator, dispatch),
+        handleClickCollapse: bindActionCreators(sideCollapseActionCreator, dispatch),
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
+export default connect(mapStateToProps, mapDispatchToProps)(Side);
 

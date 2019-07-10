@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Menu, Icon, message} from 'antd';
 import {bindActionCreators} from "redux";
-import {loginSuccessActionCreator} from "../../aircs/User";
+import {logoutSuccessActionCreator} from "../../acirs/User";
 import './index.css'
 
 const {SubMenu} = Menu;
@@ -31,7 +31,7 @@ class Head extends React.PureComponent {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        handleLogoutSuccess: bindActionCreators(loginSuccessActionCreator, dispatch),
+        handleLogoutSuccess: bindActionCreators(logoutSuccessActionCreator, dispatch),
     };
 };
 

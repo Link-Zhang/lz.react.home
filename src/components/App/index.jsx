@@ -1,38 +1,52 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {appOnLoadActionCreator, appOnDirectActionCreator} from '../../aircs/App';
+import {Layout} from 'antd';
+import Bread from '../Bread';
+import Foot from '../Foot';
 import Head from "../Head";
-import Welcome from '../Welcome';
+import Login from '../Login';
+import Sidebar from '../Side';
+import './index.css';
+
+const {Content} = Layout;
 
 class App extends React.Component {
+    renderContent() {
+        return (
+            <Content style={{margin: '0 16px'}}>
+                <Bread routes={this.props.routes}/>
+                <div style={{padding: 24, background: '#fff', minHeight: 400}}>Bill is a cat.</div>
+            </Content>
+        );
+    }
+
     render() {
-        if (this.props.loaded) {
-            return (
-                <Head
-                    username={this.props.username}/>
-            );
+        // if (this.props.loaded) {
+        //加载成功
+        if (!this.props.username || this.props.username === '未登录') {
+            //需要登录
+            return <Login/>
         }
         return (
-            <Welcome/>
+            <Layout style={{minHeight: '100vh'}}>
+                <Sidebar/>
+                <Layout>
+                    <Head username={this.props.username}/>
+                    {this.renderContent()}
+                    <Foot/>
+                </Layout>
+            </Layout>
         );
+        // }
+        // return <div className="center-div"><Spin spinning={true} size="large"/></div>;
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        loaded: state.App.loaded,
-        name: state.App.name,
-        username: state.App.username,
-        redirect: state.App.redirect
+        username: state.User.username,
     }
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        handleOnLoad: bindActionCreators(appOnLoadActionCreator, dispatch),
-        handleOnDirect: bindActionCreators(appOnDirectActionCreator, dispatch),
-    }
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, null)(App);
