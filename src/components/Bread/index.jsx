@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from "react-redux";
 import {Breadcrumb, Icon} from 'antd';
 import sidebarMenu from '../../menu';
 
@@ -24,26 +25,26 @@ class Bread extends React.PureComponent {
         const breadItemArray = [];
 
         breadItemArray.push(
-            <Breadcrumb.Item key="systemHome" href="#"><Icon type="home"/>首页</Breadcrumb.Item>
+            <Breadcrumb.Item key="systemHome" href="/#"><Icon type="home"/>首页</Breadcrumb.Item>
         );
 
-        // todo: Fix it!
-
-        // for (const route of this.props.routes) {
-        //     const name = this.nameMap.get(route.path);
-        //     if (name) {
-        //         const icon = this.iconMap.get(route.path);
-        //         if (icon) {
-        //             breadItemArray.push(
-        //                 <Breadcrumb.Item key={name}><Icon type={icon}/> {name}</Breadcrumb.Item>
-        //             );
-        //         } else {
-        //             breadItemArray.push(
-        //                 <Breadcrumb.Item key={name}>{name}</Breadcrumb.Item>
-        //             );
-        //         }
-        //     }
-        // }
+        for (const path of this.props.pathname.split("/")) {
+            const name = this.nameMap.get(path);
+            if (name) {
+                console.log(name);
+                const icon = this.iconMap.get(path);
+                if (icon) {
+                    breadItemArray.push(
+                        <Breadcrumb.Item key={name} href={this.props.pathname}><Icon type={icon}/> {name}
+                        </Breadcrumb.Item>
+                    );
+                } else {
+                    breadItemArray.push(
+                        <Breadcrumb.Item key={name} href={this.props.pathname}>{name}</Breadcrumb.Item>
+                    );
+                }
+            }
+        }
 
         return (
             <Breadcrumb style={{margin: '16px 0'}}>{breadItemArray}</Breadcrumb>
@@ -51,4 +52,10 @@ class Bread extends React.PureComponent {
     }
 }
 
-export default Bread;
+const mapStateToProps = (state) => {
+    return {
+        pathname: state.router.location.pathname,
+    }
+};
+
+export default connect(mapStateToProps, null)(Bread);

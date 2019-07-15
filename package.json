@@ -22,8 +22,6 @@
     "redux": "4.0.3",
     "redux-devtools-extension": "2.13.8",
     "redux-logger": "3.0.6",
-    "restify": "7.7.0",
-    "restify-cors-middleware": "1.1.1",
     "superagent": "5.1.0",
     "superagent-promise": "1.1.0"
   },
@@ -48,5 +46,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "jsonwebtoken": "^8.5.1",
+    "restify": "7.7.0",
+    "restify-cors-middleware": "^1.1.1"
   }
 }

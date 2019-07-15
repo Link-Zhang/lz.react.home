@@ -8,13 +8,13 @@ import preloadedState from './PreloadedState';
 import createRootReducer from './Reducer';
 import globalConfig from '../config';
 
-const lzRouterMiddleware = routerMiddleware(history);
+const historyRouterMiddleware = routerMiddleware(history);
 
 const getMiddleware = () => {
     if (globalConfig.debug) {
-        return applyMiddleware(lzRouterMiddleware, localStorageMiddleware, createLogger())
+        return applyMiddleware(historyRouterMiddleware, localStorageMiddleware, createLogger())
     } else {
-        return applyMiddleware(lzRouterMiddleware, localStorageMiddleware);
+        return applyMiddleware(historyRouterMiddleware, localStorageMiddleware);
     }
 };
 

@@ -15,6 +15,7 @@ class Login extends React.PureComponent {
         });
     };
 
+    // todo : fix it
     handleSubmit = async (e) => {
         e.preventDefault();
         message.destroy();
@@ -29,20 +30,19 @@ class Login extends React.PureComponent {
             if (res.success) {
                 message.destroy();
                 message.success('登录成功', 1);
-                // console.log("1231");
-                this.props.handleLoginSuccess(res.data);
+                this.props.handleLoginSuccess(res.username, res.token);
             } else {
                 message.destroy();
                 message.error('登录失败: 用户或密码错误');
             }
         } catch (exception) {
-            console.log(exception);
             this.props.form.setFieldsValue({
                 password: ''
             });
             hide();
             message.destroy();
             message.error('网络请求出错!', 1);
+            console.log(exception);
         }
     };
 
@@ -92,7 +92,7 @@ class Login extends React.PureComponent {
                             {getFieldDecorator('remember', {
                                 valuePropName: 'checked',
                                 initialValue: true,
-                            })(<Checkbox>记住用户</Checkbox>)}
+                            })(<Checkbox>记住我</Checkbox>)}
                             <Button type="primary"
                                     block size={"large"}
                                     htmlType={"submit"}>

@@ -39,13 +39,19 @@ class Ajax {
         return this.requestWrapper('POST', url, {...opts, data});
     }
 
-    getCurrentUser() {
-        return this.get(`${globalConfig.getAPIPath()}${globalConfig.login.getCurrentUser}`);
-    }
-
     login(username, password) {
         const headers = {'Content-Type': 'application/x-www-form-urlencoded'};
-        return this.post(`${globalConfig.getAPIPath()}${globalConfig.login.validate}`, {username, password}, {headers});
+        return this.post(`${globalConfig.getAPIPath()}${globalConfig.login.login}`, {username, password}, {headers});
+    }
+
+    logout(username) {
+        const headers = {'Content-Type': 'application/x-www-form-urlencoded'};
+        return this.post(`${globalConfig.getAPIPath()}${globalConfig.login.logout}`, {username}, {headers});
+    }
+
+    validation(token) {
+        const headers = {'Content-Type': 'application/x-www-form-urlencoded'};
+        return this.post(`${globalConfig.getAPIPath()}${globalConfig.login.validation}`, {token}, {headers});
     }
 }
 

@@ -3,15 +3,19 @@ import {connect} from 'react-redux';
 import {Menu, Icon, message} from 'antd';
 import {bindActionCreators} from "redux";
 import {logoutSuccessActionCreator} from "../../acirs/User";
+import ajax from '../../utils/ajax';
 import './index.css'
 
 const {SubMenu} = Menu;
 
 class Head extends React.PureComponent {
-    handleClickLogout = () => {
-        message.destroy();
-        message.success('注销成功', 1);
-        this.props.handleLogoutSuccess();
+    handleClickLogout = async () => {
+        const res = await ajax.logout(this.props.username);
+        if (res.success) {
+            message.destroy();
+            message.success('注销成功', 1);
+            this.props.handleLogoutSuccess();
+        }
     };
 
     render() {

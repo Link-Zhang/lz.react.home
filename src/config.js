@@ -10,8 +10,9 @@ module.exports = {
         timeout: 5000,  // 请求的超时时间, 单位毫秒
     },
     login: {  // 登录相关配置
-        getCurrentUser: '/getCurrentUser',  // 后端必须要提供接口校验当前用户的身份, 如果拿不到用户信息, 才会尝试登录
-        validate: '/login',  // 校验用户信息, 表单的submit地址. 如果登录成功, 必须返回用户名
+        login: '/login',
+        logout: '/logout',
+        validation: '/validation',
     },
     sidebar: {  // 侧边栏相关配置
         collapsible: true,  // 是否显示折叠侧边栏的按钮
