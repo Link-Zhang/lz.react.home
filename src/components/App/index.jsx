@@ -32,7 +32,7 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        App.wait(0.5).then(
+        App.wait(0).then(
             res => {
                 const token = window.localStorage.getItem('jwt');
                 if (token) {
@@ -65,16 +65,18 @@ class App extends React.Component {
 
     renderContent() {
         return (
-            <Content style={{margin: '0 16px'}}>
-                <Bread/>
-                <div style={{padding: 24, background: '#fff', minHeight: 400}}>Bill is a cat.</div>
+            <Content style={
+                {margin: '0px 16px', overflow: 'initial'}
+            }>
+                <Bread routes={this.props.routes}/>
+                <div style={{padding: 16, background: '#fff', minHeight: 750}}>
+                    {this.props.children}
+                </div>
             </Content>
         );
     }
 
     render() {
-        console.log(this.props.children);
-
         if (!this.props.loading) {
             //加载成功
             if (!this.props.authorization || !this.props.username || this.props.username === '未登录') {

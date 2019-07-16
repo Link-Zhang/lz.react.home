@@ -1,5 +1,4 @@
 import React from 'react';
-import {connect} from "react-redux";
 import {Breadcrumb, Icon} from 'antd';
 import sidebarMenu from '../../menu';
 
@@ -25,37 +24,30 @@ class Bread extends React.PureComponent {
         const breadItemArray = [];
 
         breadItemArray.push(
-            <Breadcrumb.Item key="systemHome" href="/#"><Icon type="home"/>首页</Breadcrumb.Item>
+            <Breadcrumb.Item key="dashboard" href="/#"><Icon type="dashboard"/>仪表盘</Breadcrumb.Item>
         );
 
-        for (const path of this.props.pathname.split("/")) {
-            const name = this.nameMap.get(path);
+        for (const route of this.props.routes) {
+            const name = this.nameMap.get(route.path);
             if (name) {
-                console.log(name);
-                const icon = this.iconMap.get(path);
+                const icon = this.iconMap.get(route.path);
                 if (icon) {
                     breadItemArray.push(
-                        <Breadcrumb.Item key={name} href={this.props.pathname}><Icon type={icon}/> {name}
+                        <Breadcrumb.Item key={name}><Icon type={icon}/> {name}
                         </Breadcrumb.Item>
                     );
                 } else {
                     breadItemArray.push(
-                        <Breadcrumb.Item key={name} href={this.props.pathname}>{name}</Breadcrumb.Item>
+                        <Breadcrumb.Item key={name}>{name}</Breadcrumb.Item>
                     );
                 }
             }
         }
 
         return (
-            <Breadcrumb style={{margin: '16px 0'}}>{breadItemArray}</Breadcrumb>
+            <Breadcrumb style={{margin: '16px 0px'}}>{breadItemArray}</Breadcrumb>
         );
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        pathname: state.router.location.pathname,
-    }
-};
-
-export default connect(mapStateToProps, null)(Bread);
+export default Bread;

@@ -1,7 +1,7 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
+import {Link} from 'react-router';
 import {Layout, Menu, Icon} from 'antd';
 import Logo from '../Logo'
 import {sideCollapseActionCreator} from '../../acirs/Side';

@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 import {Menu, Icon, message} from 'antd';
 import {bindActionCreators} from "redux";
 import './index.css'
@@ -9,6 +10,7 @@ import {logoutSuccessActionCreator} from "../../acirs/User";
 const {SubMenu} = Menu;
 
 class Head extends React.PureComponent {
+    // todo: fix it
     handleClickLogout = async () => {
         const res = await ajax.logout(this.props.username);
         if (res.success) {
@@ -18,6 +20,7 @@ class Head extends React.PureComponent {
         }
     };
 
+    // todo : add Antd Header failed
     render() {
         return (
             <Menu mode="horizontal"
@@ -33,9 +36,13 @@ class Head extends React.PureComponent {
     }
 }
 
+Head.propTypes = {
+    username: PropTypes.string,
+};
+
 const mapStateToProps = (state) => {
     return {
-        username: state.User.username, //用户名
+        username: state.User.username,
     }
 };
 

@@ -6,7 +6,7 @@ const {Footer} = Layout;
 const Foot = () =>
     <div>
         <BackTop/>
-        <Footer style={{textAlign: 'center'}}>Link Zhang ©2019-2099</Footer>
+        <Footer style={{textAlign: 'center', background: '#fff'}}>Link Zhang ©2019-2099</Footer>
     </div>
 ;
 
