@@ -1,6 +1,10 @@
+export const appConstants = {
+    LOADED: 'APP_LOADED',
+};
+
 export const sideConstants = {
     // 侧边栏收缩或扩张
-    COLLAPSE: 'SIDE_COLLAPSE'
+    COLLAPSE: 'SIDE_COLLAPSE',
 };
 
 export const userConstants = {

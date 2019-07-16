@@ -2,9 +2,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Menu, Icon, message} from 'antd';
 import {bindActionCreators} from "redux";
-import {logoutSuccessActionCreator} from "../../acirs/User";
-import ajax from '../../utils/ajax';
 import './index.css'
+import ajax from '../../utils/ajax';
+import {logoutSuccessActionCreator} from "../../acirs/User";
 
 const {SubMenu} = Menu;
 
@@ -33,10 +33,16 @@ class Head extends React.PureComponent {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        username: state.User.username, //用户名
+    }
+};
+
 const mapDispatchToProps = (dispatch) => {
     return {
         handleLogoutSuccess: bindActionCreators(logoutSuccessActionCreator, dispatch),
     };
 };
 
-export default connect(null, mapDispatchToProps)(Head);
+export default connect(mapStateToProps, mapDispatchToProps)(Head);

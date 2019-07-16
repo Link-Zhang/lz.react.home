@@ -15,35 +15,44 @@ class Login extends React.PureComponent {
         });
     };
 
-    // todo : fix it
-    handleSubmit = async (e) => {
+    async login(username, password) {
+        try {
+            return await  ajax.login(username, password);
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    handleSubmit = (e) => {
         e.preventDefault();
         message.destroy();
         const hide = message.loading('正在验证...', 0);
-        try {
-            const {getFieldsValue} = this.props.form;
-            const res = await ajax.login(getFieldsValue().username, getFieldsValue().password);
-            this.props.form.setFieldsValue({
-                password: ''
-            });
-            hide();
-            if (res.success) {
-                message.destroy();
-                message.success('登录成功', 1);
-                this.props.handleLoginSuccess(res.username, res.token);
-            } else {
-                message.destroy();
-                message.error('登录失败: 用户或密码错误');
+        const {getFieldsValue} = this.props.form;
+        this.login(getFieldsValue().username, getFieldsValue().password).then(
+            res => {
+                this.props.form.setFieldsValue({
+                    password: ''
+                });
+                hide();
+                if (res.success) {
+                    message.destroy();
+                    message.success('登录成功', 1);
+                    this.props.handleLoginSuccess(res.username, res.token);
+                } else {
+                    message.destroy();
+                    message.error('登录失败: 用户或密码错误');
+                }
             }
-        } catch (exception) {
-            this.props.form.setFieldsValue({
-                password: ''
-            });
-            hide();
-            message.destroy();
-            message.error('网络请求出错!', 1);
-            console.log(exception);
-        }
+        ).catch(
+            () => {
+                this.props.form.setFieldsValue({
+                    password: ''
+                });
+                hide();
+                message.destroy();
+                message.error('网络请求出错!', 1);
+            }
+        );
     };
 
     render() {

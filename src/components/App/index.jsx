@@ -1,22 +1,27 @@
 import React from 'react';
-import {bindActionCreators} from "redux";
+import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Spin, Layout, message} from 'antd';
 import Bread from '../Bread';
 import Foot from '../Foot';
-import Head from "../Head";
+import Head from '../Head';
 import Login from '../Login';
 import Sidebar from '../Side';
 import ajax from '../../utils/ajax';
-import {loginSuccessActionCreator} from "../../acirs/User";
+import {loginSuccessActionCreator} from '../../acirs/User';
+import {appLoadedActionCreator} from '../../acirs/App';
 import './index.css';
 
 const {Content} = Layout;
 
 class App extends React.Component {
-    state = {
-        loading: true,
-    };
+    static async wait(seconds) {
+        try {
+            await new Promise(resolve => setTimeout(resolve, seconds * 1000));
+        } catch (e) {
+            console.log(e);
+        }
+    }
 
     static async validate(token) {
         try {
@@ -27,35 +32,35 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        const token = window.localStorage.getItem('jwt');
-        console.log(token);
-        if (token) {
-            // token存在，需要向服务器验证
-            message.destroy();
-            const hide = message.loading('正在验证用户信息...', 0);
-            App.validate(token).then(
-                res => {
-                    hide();
-                    if (res.success) {
-                        message.destroy();
-                        message.success('用户信息验证成功', 1);
-                        this.props.handleLoginSuccess(res.username, res.token);
-                    } else {
-                        message.destroy();
-                        message.error('用户信息验证失败: 请重新登录！');
-                    }
-                }
-            ).catch(
-                () => {
-                    hide();
+        App.wait(0.5).then(
+            res => {
+                const token = window.localStorage.getItem('jwt');
+                if (token) {
                     message.destroy();
-                    message.error('无法验证用户信息， 请重新登录！');
+                    const hide = message.loading('正在验证用户信息...', 0);
+                    App.validate(token).then(
+                        res => {
+                            hide();
+                            if (res.success) {
+                                message.destroy();
+                                message.success('用户信息验证成功', 1);
+                                this.props.handleLoginSuccess(res.username, res.token);
+                            } else {
+                                message.destroy();
+                                message.error('用户信息验证失败: 请重新登录！');
+                            }
+                        }
+                    ).catch(
+                        () => {
+                            hide();
+                            message.destroy();
+                            message.error('无法验证用户信息， 请重新登录！');
+                        }
+                    )
                 }
-            )
-        }
-        this.setState({
-            loading: false
-        });
+                this.props.handleAppLoaded();
+            }
+        );
     }
 
     renderContent() {
@@ -68,7 +73,9 @@ class App extends React.Component {
     }
 
     render() {
-        if (!this.state.loading) {
+        console.log(this.props.children);
+
+        if (!this.props.loading) {
             //加载成功
             if (!this.props.authorization || !this.props.username || this.props.username === '未登录') {
                 //需要登录
@@ -78,7 +85,7 @@ class App extends React.Component {
                 <Layout style={{minHeight: '100vh'}}>
                     <Sidebar/>
                     <Layout>
-                        <Head username={this.props.username}/>
+                        <Head/>
                         {this.renderContent()}
                         <Foot/>
                     </Layout>
@@ -91,6 +98,7 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
+        loading: state.App.loading,//应用加载中
         authorization: state.User.authorization, //授权情况
         username: state.User.username, //用户名
         token: state.User.token, // token
@@ -100,6 +108,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         handleLoginSuccess: bindActionCreators(loginSuccessActionCreator, dispatch), //用户登录
+        handleAppLoaded: bindActionCreators(appLoadedActionCreator, dispatch), //应用加载
     };
 };
 

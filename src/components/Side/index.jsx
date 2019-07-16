@@ -65,7 +65,7 @@ class Side extends React.PureComponent {
     render() {
         return (
             <Sider collapsible collapsed={this.props.collapse} onCollapse={this.props.handleClickCollapse}>
-                <Logo collapse={this.props.collapse}/>
+                <Logo/>
                 <Menu theme="dark" defaultSelectedKeys={this.fistItem} mode="inline">
                     {this.l1Menu}
                 </Menu>

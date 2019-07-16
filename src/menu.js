@@ -6,12 +6,12 @@ const sidebarMenu = [
         icon: 'home',  // 图标，1级必选，其他可选
     },
     {
-        key: 'community',  // url，必选
+        key: 'welcome',  // url，必选
         name: '社区',  // name,必选
         icon: 'deployment-unit',  // 图标，1级必选，其他可选
     },
     {
-        key: 'history',  // url，必选
+        key: 'fuck',  // url，必选
         name: '历史价格',  // name,必选
         icon: 'history',  // 图标，1级必选，其他可选
     },

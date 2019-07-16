@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.css';
 import globalConfig from '../../config';
+import {connect} from "react-redux";
 
 class Logo extends React.PureComponent {
     render() {
@@ -14,4 +15,10 @@ class Logo extends React.PureComponent {
     }
 }
 
-export default Logo;
+const mapStateToProps = (state) => {
+    return {
+        collapse: state.Side.collapse,
+    };
+};
+
+export default connect(mapStateToProps, null)(Logo);
