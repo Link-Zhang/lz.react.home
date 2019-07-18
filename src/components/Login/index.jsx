@@ -17,7 +17,7 @@ class Login extends React.PureComponent {
 
     async login(username, password) {
         try {
-            return await  ajax.login(username, password);
+            return await ajax.login(username, password);
         } catch (e) {
             console.log(e);
         }

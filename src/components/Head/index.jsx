@@ -10,14 +10,32 @@ import {logoutSuccessActionCreator} from "../../acirs/User";
 const {SubMenu} = Menu;
 
 class Head extends React.PureComponent {
-    // todo: fix it
-    handleClickLogout = async () => {
-        const res = await ajax.logout(this.props.username);
-        if (res.success) {
-            message.destroy();
-            message.success('注销成功', 1);
-            this.props.handleLogoutSuccess();
+    static async logout(username) {
+        try {
+            return await ajax.logout(username);
+        } catch (e) {
+            console.log(e);
         }
+    }
+
+    handleClickLogout = () => {
+        Head.logout(this.props.username).then(
+            res => {
+                if (res.success) {
+                    message.destroy();
+                    message.success('注销成功', 1);
+                    this.props.handleLogoutSuccess();
+                } else {
+                    message.destroy();
+                    message.success('注销失败', 1);
+                }
+            }
+        ).catch(
+            () => {
+                message.destroy();
+                message.error('网络请求出错!', 1);
+            }
+        )
     };
 
     // todo : add Antd Header failed

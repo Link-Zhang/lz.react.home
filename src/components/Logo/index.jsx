@@ -8,7 +8,7 @@ class Logo extends React.PureComponent {
         return (
             <div className={this.props.collapse ? "ant-layout-logo-collapse" : "ant-layout-logo-normal"}>
                 <div className="ant-layout-logo-text">
-                    <a href="#/">{this.props.collapse ? globalConfig.name[0] : globalConfig.name}</a>
+                    <a href="/">{this.props.collapse ? globalConfig.name[0] : globalConfig.name}</a>
                 </div>
             </div>
         );

@@ -6,12 +6,13 @@ import history from './redux/History';
 import store from './redux/Store';
 import App from './components/App';
 import Welcome from './components/Welcome';
+import Dashboard from './pages/Dashboard';
 
 const root = (
     <Provider store={store}>
         <Router history={history}>
             <Route path="/" exact component={App}>
-                <IndexRoute component={Welcome}/>
+                <IndexRoute component={Dashboard}/>
                 <Route path="dashboard" component={Welcome}/>
                 <Route path="home" component={Welcome}/>
                 <Route path="community" component={Welcome}/>

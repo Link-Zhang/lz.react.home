@@ -69,7 +69,7 @@ class App extends React.Component {
                 {margin: '0px 16px', overflow: 'initial'}
             }>
                 <Bread routes={this.props.routes}/>
-                <div style={{padding: 16, background: '#fff', minHeight: 750}}>
+                <div style={{minHeight: 750}}>
                     {this.props.children}
                 </div>
             </Content>
