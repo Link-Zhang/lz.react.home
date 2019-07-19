@@ -1,17 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Row, Col, Card} from 'antd';
-import Page from '../../components/Page';
+import {Row, Col} from 'antd';
 import TotalHouse from './components/TotalHouse';
 import TotalCommunity from './components/TotalCommunity';
 import AvgTotalPrice from "./components/AvgTotalPrice";
 import AvgUnitPrice from "./components/AvgUnitPrice";
-import styles from './index.css';
+import StatisticChart from "./components/StatisticChart";
 
 class Dashboard extends React.PureComponent {
     render() {
         return (
-            <Page className={styles.dashboard}>
+            <div>
                 <Row gutter={24}>
                     <Col key={"totalHouse"} lg={6} md={12}>
                         <TotalHouse/>
@@ -25,21 +24,11 @@ class Dashboard extends React.PureComponent {
                     <Col key={"totalCommunity"} lg={6} md={12}>
                         <TotalCommunity/>
                     </Col>
-
                     <Col lg={24} md={24}>
-                        <Card
-                            bordered={true}
-                            bodyStyle={{
-                                padding: '24px 36px 24px 0',
-                            }}
-                        >
-                            <div>
-                                Hello, Chart!
-                            </div>
-                        </Card>
+                        <StatisticChart/>
                     </Col>
                 </Row>
-            </Page>
+            </div>
         );
     }
 }

@@ -12,10 +12,10 @@ const NumberCard = ({icon, color, title, number}) => {
             bodyStyle={{padding: 10, cursor: 'pointer'}}
             type={"inner"}
         >
-            <Icon className={"iconWarp"} style={{color}} type={icon}/>
-            <div className={"content"}>
-                <p className={"title"}>{title || 'No Title'}</p>
-                <p className={"number"}>
+            <Icon className={"numberCardIconWarp"} style={{color}} type={icon}/>
+            <div className={"numberCardContent"}>
+                <p className={"numberCardTitle"}>{title || 'No Title'}</p>
+                <p className={"numberCardNumber"}>
                     <CountUp
                         start={0}
                         end={number}
