@@ -2,6 +2,10 @@ export const appConstants = {
     LOADED: 'APP_LOADED',
 };
 
+export const dashboardConstants = {
+    DATA_DONE: 'DASHBOARD_DATA_DONE',
+};
+
 export const sideConstants = {
     // 侧边栏收缩或扩张
     COLLAPSE: 'SIDE_COLLAPSE',

@@ -6,15 +6,10 @@ import './index.css';
 
 const NumberCard = ({icon, color, title, number}) => {
     return (
-        <Card
-            className={"numberCard"}
-            bordered={true}
-            bodyStyle={{padding: 10, cursor: 'pointer'}}
-            type={"inner"}
-        >
+        <Card className={"numberCard"}>
             <Icon className={"numberCardIconWarp"} style={{color}} type={icon}/>
             <div className={"numberCardContent"}>
-                <p className={"numberCardTitle"}>{title || 'No Title'}</p>
+                <p className={"numberCardTitle"}>{title}</p>
                 <p className={"numberCardNumber"}>
                     <CountUp
                         start={0}

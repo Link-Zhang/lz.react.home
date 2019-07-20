@@ -53,6 +53,10 @@ class Ajax {
         const headers = {'Content-Type': 'application/x-www-form-urlencoded'};
         return this.post(`${globalConfig.getAPIPath()}${globalConfig.login.validation}`, {token}, {headers});
     }
+
+    statisticAll() {
+        return this.get(`${globalConfig.statisticServer.path}${globalConfig.statisticServer.SH}`);
+    }
 }
 
 export default Ajax;

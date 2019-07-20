@@ -1,14 +1,18 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import NumberCard from "../Numbercard";
 
-// todo: change the data from server
 class AvgTotalPrice extends React.PureComponent {
     render() {
         return (
-            <NumberCard icon={"dollar"} color={"#FFD700"} title={"平均总价(万元/间)"}
-                        number={263.29}/>
+            <NumberCard icon={"dollar"} color={"#f69899"} title={"平均总价(万元/间)"}
+                        number={this.props.number}/>
         );
     }
 }
+
+AvgTotalPrice.propTypes = {
+    number: PropTypes.number,
+};
 
 export default AvgTotalPrice;
