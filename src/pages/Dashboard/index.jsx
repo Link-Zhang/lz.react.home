@@ -8,6 +8,7 @@ import TotalHouse from './components/TotalHouse';
 import AvgTotalPrice from "./components/AvgTotalPrice";
 import AvgUnitPrice from "./components/AvgUnitPrice";
 import StatisticChart from "./components/StatisticChart";
+import StockChart from "./components/StockChart";
 import {dashboardDataDoneActionCreator} from '../../acirs/Dashboard';
 import ajax from "../../utils/ajax";
 
@@ -36,21 +37,30 @@ class Dashboard extends React.PureComponent {
 
     render() {
         return (
-            <div style={{marginBottom: '16px', marginTop: '16px'}}>
-                <Row gutter={24}>
-                    <Col key={"totalHouse"} lg={8} md={8}>
-                        <TotalHouse number={this.props.totalHouse}/>
-                    </Col>
-                    <Col key={"avgTotalPrice"} lg={8} md={8}>
-                        <AvgTotalPrice number={this.props.avgTotalPrice}/>
-                    </Col>
-                    <Col key={"avgUnitPrice"} lg={8} md={8}>
-                        <AvgUnitPrice number={this.props.avgUnitPrice}/>
-                    </Col>
-                    <Col lg={24} md={24}>
-                        <StatisticChart data={this.props.data}/>
-                    </Col>
-                </Row>
+            <div>
+                <div style={{marginBottom: '16px', marginTop: '16px'}}>
+                    <Row gutter={24}>
+                        <Col key={"totalHouse"} lg={8} md={8}>
+                            <TotalHouse number={this.props.totalHouse}/>
+                        </Col>
+                        <Col key={"avgTotalPrice"} lg={8} md={8}>
+                            <AvgTotalPrice number={this.props.avgTotalPrice}/>
+                        </Col>
+                        <Col key={"avgUnitPrice"} lg={8} md={8}>
+                            <AvgUnitPrice number={this.props.avgUnitPrice}/>
+                        </Col>
+                        <Col lg={24} md={24}>
+                            <StatisticChart data={this.props.data}/>
+                        </Col>
+                    </Row>
+                </div>
+                <div style={{marginBottom: '16px', marginTop: '16px'}}>
+                    <Row>
+                        <Col lg={24} md={24}>
+                            <StockChart data={this.props.data}/>
+                        </Col>
+                    </Row>
+                </div>
             </div>
         );
     }

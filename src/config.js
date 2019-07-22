@@ -64,6 +64,6 @@ module.exports = {
     },
     statisticServer: {
         path: 'http://localhost:2143/feign/statistic/',
-        SH: '?statisticFindVO.statisticHouseDistrict=%E4%B8%8A%E6%B5%B7&limit=365',
+        SH: '?statisticFindVO.statisticHouseDistrict=%E4%B8%8A%E6%B5%B7&limit=3650',
     },
 };

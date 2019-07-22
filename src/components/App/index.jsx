@@ -32,7 +32,7 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        App.wait(0).then(
+        App.wait(0.5).then(
             res => {
                 const token = window.localStorage.getItem('jwt');
                 if (token) {
