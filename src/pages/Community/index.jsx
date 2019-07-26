@@ -1,7 +1,6 @@
 import React from 'react';
+import CommunityList from "./components/CommunityList";
 import CommunityTab from './components/CommunityTab'
-
-// import HouseList from "./components/HouseList";
 
 class Community extends React.PureComponent {
 
@@ -9,7 +8,7 @@ class Community extends React.PureComponent {
         return (
             <div>
                 <CommunityTab/>
-                {/*<HouseList/>*/}
+                <CommunityList/>
             </div>
         );
     }

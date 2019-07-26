@@ -68,7 +68,7 @@ module.exports = {
     },
     communityServer: {
         path: 'http://localhost:2142/feign/vcommunity/',
-        findAPI: '?limit=2000&vcommunityFindVO.district=',
+        findAPI: '?limit=9999&vcommunityFindVO.district=',
     },
     statisticServer: {
         path: 'http://localhost:2143/feign/statistic/',

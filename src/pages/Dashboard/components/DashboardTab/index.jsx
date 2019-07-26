@@ -21,9 +21,9 @@ class DashboardTab extends React.PureComponent {
             res => {
                 let data = _.get(res, "statisticVOList");
                 let theLast = _.last(data);
-                let totalHouse = theLast.saleCount;
-                let avgTotalPrice = theLast.avgTotalPrice;
-                let avgUnitPrice = theLast.avgUnitPrice;
+                let totalHouse = _.get(theLast, "saleCount");
+                let avgTotalPrice = _.get(theLast, "avgTotalPrice");
+                let avgUnitPrice = _.get(theLast, "avgUnitPrice");
                 let sortedData = _.sortBy(data, function (item) {
                     return item.id;
                 });

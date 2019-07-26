@@ -30,7 +30,7 @@ class HouseList extends React.PureComponent {
                 </Button>
             </div>
         ),
-        onFilter: (value, record) => record['communityName'].toString().toLowerCase().includes(value.toLowerCase()),
+        onFilter: (value, record) => record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
         filterIcon: filtered => (
             <Icon type="search" style={{color: filtered ? '#1890ff' : undefined}}/>
         ),

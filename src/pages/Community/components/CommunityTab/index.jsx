@@ -1,9 +1,11 @@
 import React from 'react';
 import {Tabs} from 'antd';
+import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import _ from "lodash";
 import communityDistrictMenu from './district';
 import ajax from "../../../../utils/ajax";
+import {communityDataDoneActionCreator} from "../../../../acirs/Community";
 
 class CommunityTab extends React.PureComponent {
     async community(district) {
@@ -17,10 +19,12 @@ class CommunityTab extends React.PureComponent {
     handleTabClick = key => {
         this.community(key).then(
             res => {
-                console.log("123");
-                console.log(res);
-                // let data = _.get(res, "houseVOList");
-                // this.props.handleDataDone(data);
+                let data = _.get(res, "vcommunityVOList");
+                let fixedData = _.update(data, '', function (n) {
+                    return n;
+                });
+                console.log(fixedData);
+                this.props.handleDataDone(data);
             }
         );
     };
@@ -50,10 +54,10 @@ class CommunityTab extends React.PureComponent {
     }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         handleDataDone: bindActionCreators(houseDataDoneActionCreator, dispatch),
-//     };
-// };
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleDataDone: bindActionCreators(communityDataDoneActionCreator, dispatch),
+    };
+};
 
-export default connect(null, null)(CommunityTab);
+export default connect(null, mapDispatchToProps)(CommunityTab);

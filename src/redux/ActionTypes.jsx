@@ -3,6 +3,11 @@ export const appConstants = {
     LOADED: 'APP_LOADED',
 };
 
+export const communityConstants = {
+    // 社区表数据获取完毕
+    DATA_DONE: 'COMMUNITY_DATA_DONE',
+};
+
 export const dashboardConstants = {
     // 仪表盘数据获取完毕
     DATA_DONE: 'DASHBOARD_DATA_DONE',
