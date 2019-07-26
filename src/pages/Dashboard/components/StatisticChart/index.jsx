@@ -1,5 +1,6 @@
 import React from 'react';
 import {Row, Col, Card} from 'antd';
+import {connect} from "react-redux";
 import {Line, CartesianGrid, XAxis, YAxis, Tooltip, LineChart, Brush, AreaChart, Area, Legend} from 'recharts';
 import ChartContainer from '../ChartContainer';
 
@@ -80,4 +81,10 @@ class StatisticChart extends React.PureComponent {
     }
 }
 
-export default StatisticChart;
+const mapStateToProps = (state) => {
+    return {
+        data: state.Dashboard.data,
+    }
+};
+
+export default connect(mapStateToProps, null)(StatisticChart);

@@ -54,8 +54,16 @@ class Ajax {
         return this.post(`${globalConfig.getAPIPath()}${globalConfig.login.validation}`, {token}, {headers});
     }
 
-    statisticAll() {
-        return this.get(`${globalConfig.statisticServer.path}${globalConfig.statisticServer.SH}`);
+    statistic(district) {
+        return this.get(`${globalConfig.statisticServer.path}${globalConfig.statisticServer.findAPI}${encodeURI(district)}`);
+    }
+
+    house(district) {
+        return this.get(`${globalConfig.houseServer.path}${globalConfig.houseServer.findAPI}${encodeURI(district)}`);
+    }
+
+    community(district) {
+        return this.get(`${globalConfig.communityServer.path}${globalConfig.communityServer.findAPI}${encodeURI(district)}`);
     }
 }
 

@@ -7,6 +7,8 @@ import store from './redux/Store';
 import App from './components/App';
 import Welcome from './components/Welcome';
 import Dashboard from './pages/Dashboard';
+import House from './pages/House';
+import Community from './pages/Community';
 
 const root = (
     <Provider store={store}>
@@ -14,13 +16,9 @@ const root = (
             <Route path="/" exact component={App}>
                 <IndexRoute component={Dashboard}/>
                 <Route path="dashboard" component={Welcome}/>
-                <Route path="home" component={Welcome}/>
-                <Route path="community" component={Welcome}/>
+                <Route path="house" component={House}/>
+                <Route path="community" component={Community}/>
                 <Route path="history" component={Welcome}/>
-                <Route path="statistic">
-                    <Route path="shanghai" component={Welcome}/>
-                    <Route path="changning" component={Welcome}/>
-                </Route>
             </Route>
         </Router>
     </Provider>

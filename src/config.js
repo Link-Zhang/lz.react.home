@@ -62,8 +62,16 @@ module.exports = {
         this.tmpApiPath = tmpApiPath;
         return tmpApiPath;
     },
+    houseServer: {
+        path: 'http://localhost:2140/feign/house/',
+        findAPI: '?limit=9999&houseFindVO.houseUsage=%E6%99%AE%E9%80%9A%E4%BD%8F%E5%AE%85&houseFindVO.houseDistrict=',
+    },
+    communityServer: {
+        path: 'http://localhost:2142/feign/vcommunity/',
+        findAPI: '?limit=2000&vcommunityFindVO.district=',
+    },
     statisticServer: {
         path: 'http://localhost:2143/feign/statistic/',
-        SH: '?statisticFindVO.statisticHouseDistrict=%E4%B8%8A%E6%B5%B7&limit=3650',
+        findAPI: '?limit=3650&statisticFindVO.statisticHouseDistrict=',
     },
 };

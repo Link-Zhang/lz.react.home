@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactHighstock from 'react-highcharts/ReactHighstock.src';
 import _ from 'lodash';
+import {connect} from "react-redux";
 import moment from 'moment';
 import {Card} from 'antd';
 
@@ -55,7 +56,6 @@ class StockChart extends React.PureComponent {
             'month',
             [1, 3, 6, 12]
         ]];
-
 
         const config = {
             chart: {
@@ -178,4 +178,10 @@ class StockChart extends React.PureComponent {
     }
 }
 
-export default StockChart;
+const mapStateToProps = (state) => {
+    return {
+        data: state.Dashboard.data,
+    }
+};
+
+export default connect(mapStateToProps, null)(StockChart);

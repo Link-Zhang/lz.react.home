@@ -1,6 +1,6 @@
 import React from 'react';
 import {Breadcrumb, Icon} from 'antd';
-import sidebarMenu from '../../menu';
+import sidebarMenu from '../Side/menu';
 
 class Bread extends React.PureComponent {
     constructor() {

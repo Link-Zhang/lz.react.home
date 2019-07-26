@@ -5,7 +5,7 @@ import {Link} from 'react-router';
 import {Layout, Menu, Icon} from 'antd';
 import Logo from '../Logo'
 import {sideCollapseActionCreator} from '../../acirs/Side';
-import sidebarMenu from '../../menu';
+import sidebarMenu from './menu';
 
 const {Sider} = Layout;
 const {SubMenu} = Menu;
