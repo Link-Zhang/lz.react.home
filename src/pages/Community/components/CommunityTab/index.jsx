@@ -19,12 +19,7 @@ class CommunityTab extends React.PureComponent {
     handleTabClick = key => {
         this.community(key).then(
             res => {
-                let data = _.get(res, "vcommunityVOList");
-                let fixedData = _.update(data, '', function (n) {
-                    return n;
-                });
-                console.log(fixedData);
-                this.props.handleDataDone(data);
+                this.props.handleDataDone(_.get(res, "vcommunityVOList"));
             }
         );
     };

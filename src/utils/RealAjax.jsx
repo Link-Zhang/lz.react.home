@@ -62,6 +62,10 @@ class Ajax {
         return this.get(`${globalConfig.houseServer.path}${globalConfig.houseServer.findAPI}${encodeURI(district)}`);
     }
 
+    houseByCommunityId(communityId) {
+        return this.get(`${globalConfig.houseServer.path}${globalConfig.houseServer.findByCommunityIdAPI}${communityId}`);
+    }
+
     community(district) {
         return this.get(`${globalConfig.communityServer.path}${globalConfig.communityServer.findAPI}${encodeURI(district)}`);
     }

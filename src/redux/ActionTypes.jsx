@@ -6,6 +6,7 @@ export const appConstants = {
 export const communityConstants = {
     // 社区表数据获取完毕
     DATA_DONE: 'COMMUNITY_DATA_DONE',
+    SUB_DATA_DONE: 'COMMUNITY_SUB_DATA_DONE',
 };
 
 export const dashboardConstants = {

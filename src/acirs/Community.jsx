@@ -8,9 +8,17 @@ export const communityDataDoneActionCreator = (data) => {
     };
 };
 
+export const communitySubDataDoneActionCreator = (subData) => {
+    return {
+        type: communityConstants.SUB_DATA_DONE,
+        subData: subData,
+    }
+};
+
 // Init state
 const initState = {
     data: [{}],
+    subData: [{}],
 };
 
 // Reducer
@@ -20,6 +28,12 @@ const reducer = (state = initState, action = {}) => {
             return {
                 ...state,
                 data: action.data,
+            };
+
+        case communityConstants.SUB_DATA_DONE:
+            return {
+                ...state,
+                subData: action.subData,
             };
         default:
             return state;

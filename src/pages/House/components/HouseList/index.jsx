@@ -60,24 +60,15 @@ class HouseList extends React.PureComponent {
                 title: 'id',
                 dataIndex: 'id',
                 key: 'id',
+                ...this.getColumnSearchProps('id'),
                 render: (text, record) => <a target="_blank" rel="noopener noreferrer"
                                              href={`${record.url}`}>{text}</a>,
-            },
-            {
-                title: '市区',
-                dataIndex: 'district',
-                key: 'district',
-            },
-            {
-                title: '类型',
-                dataIndex: 'usage',
-                key: 'usage',
+
             },
             {
                 title: '小区',
                 dataIndex: 'communityName',
                 key: 'communityName',
-
                 ...this.getColumnSearchProps('communityName'),
             },
             {

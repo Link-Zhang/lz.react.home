@@ -24,8 +24,7 @@ class StockChart extends React.PureComponent {
 
         // ohlc
         const ohlc = [];
-        let open = fixedData[0][1];
-
+        let open = _.get(fixedData, '0.1');
         for (let i = 0; i < fixedData.length; i += 1) {
             const temp = [open, fixedData[i][1]];
             ohlc.push([

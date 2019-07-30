@@ -7,7 +7,6 @@ import AvgUnitPrice from './components/AvgUnitPrice';
 import StatisticChart from './components/StatisticChart';
 import StockChart from './components/StockChart';
 
-// todo: fix it if server failure!
 class Dashboard extends React.PureComponent {
     render() {
         return (
