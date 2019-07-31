@@ -58,6 +58,10 @@ class Ajax {
         return this.get(`${globalConfig.statisticServer.path}${globalConfig.statisticServer.findAPI}${encodeURI(district)}`);
     }
 
+    community(district) {
+        return this.get(`${globalConfig.communityServer.path}${globalConfig.communityServer.findAPI}${encodeURI(district)}`);
+    }
+
     house(district) {
         return this.get(`${globalConfig.houseServer.path}${globalConfig.houseServer.findAPI}${encodeURI(district)}`);
     }
@@ -66,8 +70,8 @@ class Ajax {
         return this.get(`${globalConfig.houseServer.path}${globalConfig.houseServer.findByCommunityIdAPI}${communityId}`);
     }
 
-    community(district) {
-        return this.get(`${globalConfig.communityServer.path}${globalConfig.communityServer.findAPI}${encodeURI(district)}`);
+    historyByHouseId(houseId) {
+        return this.get(`${globalConfig.historyServer.path}${globalConfig.historyServer.findByHouseIdAPI}${houseId}`);
     }
 }
 

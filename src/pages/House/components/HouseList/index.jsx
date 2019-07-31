@@ -1,12 +1,17 @@
 import React from 'react';
 import {Table, Input, Button, Icon} from 'antd';
-import ReactJson from 'react-json-view';
 import {connect} from "react-redux";
 import Highlighter from 'react-highlight-words';
+import {bindActionCreators} from "redux";
+import {houseSubDataDoneActionCreator} from "../../../../acirs/House";
+import ajax from "../../../../utils/ajax";
+import _ from "lodash";
 
 class HouseList extends React.PureComponent {
     state = {
         searchText: '',
+        expandVisible: {},
+        expandedRowRenders: {},
     };
 
     getColumnSearchProps = (dataIndex) => ({
@@ -54,6 +59,78 @@ class HouseList extends React.PureComponent {
         this.setState({searchText: ''});
     };
 
+    async historyByHouseId(houseId) {
+        try {
+            return await ajax.historyByHouseId(houseId);
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    onExpandedRowRender = (expanded, record) => {
+        const subColumns = [
+            {
+                title: '变动日期',
+                dataIndex: 'updateTime',
+                key: 'updateTime',
+                sorter: (a, b) => a.updateTime - b.updateTime,
+                sortDirections: 'descend',
+            },
+            {
+                title: '原总价',
+                dataIndex: 'oldHouseTotalPrice',
+                key: 'oldHouseTotalPrice',
+            },
+            {
+                title: '新总价',
+                dataIndex: 'newHouseTotalPrice',
+                key: 'newHouseTotalPrice',
+            },
+            {
+                title: '原单价',
+                dataIndex: 'oldHouseUnitPrice',
+                key: 'oldHouseUnitPrice',
+            },
+            {
+                title: '新单价',
+                dataIndex: 'newHouseUnitPrice',
+                key: 'newHouseUnitPrice',
+            },
+        ];
+        if (expanded) {
+            this.historyByHouseId(record.id).then(
+                res => {
+                    this.props.handleSubDataDone(_.get(res, 'historyVOList'));
+                    this.setState({
+                        expandVisible: {
+                            ...this.state.expandVisible,
+                            [record.id]: true,
+                        },
+                        expandedRowRenders: {
+                            ...this.state.expandedRowRenders,
+                            [record.id]: <Table columns={subColumns} dataSource={this.props.subData}
+                                                rowKey={record => {
+                                                    return record.id || ""
+                                                }}
+                            />,
+                        },
+                    });
+                }
+            );
+        } else {
+            this.setState({
+                expandVisible: {
+                    ...this.state.expandVisible,
+                    [record.id]: false,
+                },
+                expandedRowRenders: {
+                    ...this.state.expandedRowRenders,
+                    [record.id]: null,
+                }
+            });
+        }
+    };
+
     render() {
         const columns = [
             {
@@ -70,6 +147,12 @@ class HouseList extends React.PureComponent {
                 dataIndex: 'communityName',
                 key: 'communityName',
                 ...this.getColumnSearchProps('communityName'),
+                render: (text, record) => {
+                    let GaoDeBaseURL = `https://ditu.amap.com/search?query=`;
+                    let GaoDeURL = GaoDeBaseURL + `${record.communityName}`;
+                    return <a target="_blank" rel="noopener noreferrer"
+                              href={GaoDeURL}>{text}</a>;
+                }
             },
             {
                 title: '户型',
@@ -197,14 +280,13 @@ class HouseList extends React.PureComponent {
             <div>
                 <Table
                     dataSource={this.props.data} columns={columns}
-                    expandedRowRender={
-                        record => <ReactJson src={record}/>
-                    }
                     rowKey={record => {
                         return record.id || ""
                     }}
                     pagination={paginationProps}
                     bordered={true}
+                    expandedRowRender={(record) => this.state.expandVisible[record.id] === true ? this.state.expandedRowRenders[record.id] : true}
+                    onExpand={this.onExpandedRowRender.bind(this)}
                 />
             </div>
         );
@@ -214,8 +296,15 @@ class HouseList extends React.PureComponent {
 const mapStateToProps = (state) => {
     return {
         data: state.House.data,
+        subData: state.House.subData,
     }
 };
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleSubDataDone: bindActionCreators(houseSubDataDoneActionCreator, dispatch),
+    };
+};
 
-export default connect(mapStateToProps, null)(HouseList);
+
+export default connect(mapStateToProps, mapDispatchToProps)(HouseList);

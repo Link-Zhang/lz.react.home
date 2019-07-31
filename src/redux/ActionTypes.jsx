@@ -17,6 +17,7 @@ export const dashboardConstants = {
 export const houseContants = {
     // 房屋表数据获取完毕
     DATA_DONE: 'HOUSE_DATA_DONE',
+    SUB_DATA_DONE: 'HOUSE_SUB_DATA_DONE',
 };
 
 export const sideConstants = {

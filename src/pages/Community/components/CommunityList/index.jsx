@@ -260,9 +260,7 @@ class CommunityList extends React.PureComponent {
                 key: 'id',
                 ...this.getColumnSearchProps('id'),
                 render: (text, record) => {
-                    let GaoDeURL = `https://ditu.amap.com/search?query=` + `${record.name}`;
-                    return <a target="_blank" rel="noopener noreferrer"
-                              href={GaoDeURL}>{text}</a>;
+                    return <div>{text}</div>;
                 }
             },
             {
@@ -270,6 +268,12 @@ class CommunityList extends React.PureComponent {
                 dataIndex: 'name',
                 key: 'name',
                 ...this.getColumnSearchProps('name'),
+                render: (text, record) => {
+                    let GaoDeBaseURL = `https://ditu.amap.com/search?query=`;
+                    let GaoDeURL = GaoDeBaseURL + `${record.name}`;
+                    return <a target="_blank" rel="noopener noreferrer"
+                              href={GaoDeURL}>{text}</a>;
+                }
             },
             {
                 title: '在售房屋',

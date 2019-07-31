@@ -2,6 +2,7 @@
   "name": "lz.react.home",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "author": "Link Zhang <Link.Zhang.0@gmail.com>",
   "license": "MIT",
   "dependencies": {
@@ -30,9 +31,7 @@
     "redux-devtools-extension": "2.13.8",
     "redux-logger": "3.0.6",
     "superagent": "5.1.0",
-    "superagent-promise": "1.1.0"
-  },
-  "devDependencies": {
+    "superagent-promise": "1.1.0",
     "jsonwebtoken": "8.5.1",
     "restify": "7.7.0",
     "restify-cors-middleware": "1.1.1"

@@ -9,19 +9,21 @@ import Welcome from './components/Welcome';
 import Dashboard from './pages/Dashboard';
 import House from './pages/House';
 import Community from './pages/Community';
+import * as serviceWorker from './serviceWorker';
 
 const root = (
     <Provider store={store}>
         <Router history={history}>
             <Route path="/" exact component={App}>
                 <IndexRoute component={Dashboard}/>
-                <Route path="dashboard" component={Welcome}/>
+                <Route path="dashboard" component={Dashboard}/>
                 <Route path="house" component={House}/>
                 <Route path="community" component={Community}/>
-                <Route path="history" component={Welcome}/>
+                <Route path="welcome" component={Welcome}/>
             </Route>
         </Router>
     </Provider>
 );
 
 ReactDOM.render(root, document.getElementById('root'));
+serviceWorker.unregister();
