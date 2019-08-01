@@ -1,3 +1,3 @@
-import {createHistory} from 'history';
+import {createHashHistory} from 'history';
 
-export default createHistory();
+export default createHashHistory();

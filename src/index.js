@@ -9,7 +9,6 @@ import Welcome from './components/Welcome';
 import Dashboard from './pages/Dashboard';
 import House from './pages/House';
 import Community from './pages/Community';
-import * as serviceWorker from './serviceWorker';
 
 const root = (
     <Provider store={store}>
@@ -26,4 +25,3 @@ const root = (
 );
 
 ReactDOM.render(root, document.getElementById('root'));
-serviceWorker.unregister();
