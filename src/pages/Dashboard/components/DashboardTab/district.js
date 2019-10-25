@@ -11,7 +11,6 @@ const dashboardDistrictMenu = [
     "虹口",
     "长宁",
     "闵行",
-    "闸北",
     "青浦",
     "静安",
     "黄浦",
