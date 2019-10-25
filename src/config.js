@@ -3,7 +3,7 @@ module.exports = {
     host: 'http://localhost:3000', //项目主页
     github: 'https://github.com/link-zhang/lz.react.home',// github项目地址
     favicon: './logo.svg',// 设置网页的favicon,
-    debug: true,// 是否开启debug模式
+    debug: false,// 是否开启debug模式
     api: {
         host: 'http://localhost:8080',  // 调用ajax接口的地址, 默认值空, 如果是跨域的, 服务端要支持CORS
         path: '/api/v1',  // ajax请求的路径

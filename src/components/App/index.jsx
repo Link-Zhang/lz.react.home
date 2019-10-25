@@ -5,7 +5,7 @@ import {Spin, Layout, message} from 'antd';
 import Bread from '../Bread';
 import Foot from '../Foot';
 import Head from '../Head';
-import Login from '../Login';
+// import Login from '../Login';
 import Sidebar from '../Side';
 import ajax from '../../utils/ajax';
 import {loginSuccessActionCreator} from '../../acirs/User';

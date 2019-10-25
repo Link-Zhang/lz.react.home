@@ -169,42 +169,42 @@ class CommunityList extends React.PureComponent {
                 sorter: (a, b) => a.totalPrice - b.totalPrice,
                 filters: [
                     {
-                        text: '[0,50)万',
-                        value: '0-50',
+                        text: '(0,160]万',
+                        value: '0-160',
                     },
                     {
-                        text: '[50,100)万',
-                        value: '50-100',
+                        text: '(160,180]万',
+                        value: '160-180',
                     },
                     {
-                        text: '[100,150)万',
-                        value: '100-150',
+                        text: '(180,200]万',
+                        value: '180-200',
                     },
                     {
-                        text: '[150,200)万',
-                        value: '150-200',
+                        text: '(200,220]万',
+                        value: '200-220',
                     },
                     {
-                        text: '[200,250)万',
-                        value: '200-250',
+                        text: '(220,250]万',
+                        value: '220-250',
                     },
                     {
-                        text: '[250,300)万',
+                        text: '(250,300]万',
                         value: '250-300',
                     },
                     {
-                        text: '[300,350)万',
+                        text: '(300,350]万',
                         value: '300-350',
                     },
                     {
-                        text: '[350,400)万',
+                        text: '(350,400]万',
                         value: '350-400',
                     },
                 ],
                 onFilter: (value, record) => {
                     const minValue = value.split("-")[0];
                     const maxValue = value.split("-")[1];
-                    return (record.totalPrice - minValue >= 0) && (record.totalPrice - maxValue < 0);
+                    return (record.totalPrice - minValue > 0) && (record.totalPrice - maxValue <= 0);
                 }
             },
             {
@@ -288,42 +288,42 @@ class CommunityList extends React.PureComponent {
                 sorter: (a, b) => a.avgTotalPrice - b.avgTotalPrice,
                 filters: [
                     {
-                        text: '[0,50)万',
-                        value: '0-50',
+                        text: '(0,160]万',
+                        value: '0-160',
                     },
                     {
-                        text: '[50,100)万',
-                        value: '50-100',
+                        text: '(160,180]万',
+                        value: '160-180',
                     },
                     {
-                        text: '[100,150)万',
-                        value: '100-150',
+                        text: '(180,200]万',
+                        value: '180-200',
                     },
                     {
-                        text: '[150,200)万',
-                        value: '150-200',
+                        text: '(200,220]万',
+                        value: '200-220',
                     },
                     {
-                        text: '[200,250)万',
-                        value: '200-250',
+                        text: '(220,250]万',
+                        value: '220-250',
                     },
                     {
-                        text: '[250,300)万',
+                        text: '(250,300]万',
                         value: '250-300',
                     },
                     {
-                        text: '[300,350)万',
+                        text: '(300,350]万',
                         value: '300-350',
                     },
                     {
-                        text: '[350,400)万',
+                        text: '(350,400]万',
                         value: '350-400',
                     },
                 ],
                 onFilter: (value, record) => {
                     const minValue = value.split("-")[0];
                     const maxValue = value.split("-")[1];
-                    return (record.avgTotalPrice - minValue >= 0) && (record.avgTotalPrice - maxValue < 0);
+                    return (record.avgTotalPrice - minValue > 0) && (record.avgTotalPrice - maxValue <= 0);
                 }
             },
             {
@@ -414,42 +414,42 @@ class CommunityList extends React.PureComponent {
                 sorter: (a, b) => a.maxTotalPrice - b.maxTotalPrice,
                 filters: [
                     {
-                        text: '[0,50)万',
-                        value: '0-50',
+                        text: '(0,160]万',
+                        value: '0-160',
                     },
                     {
-                        text: '[50,100)万',
-                        value: '50-100',
+                        text: '(160,180]万',
+                        value: '160-180',
                     },
                     {
-                        text: '[100,150)万',
-                        value: '100-150',
+                        text: '(180,200]万',
+                        value: '180-200',
                     },
                     {
-                        text: '[150,200)万',
-                        value: '150-200',
+                        text: '(200,220]万',
+                        value: '200-220',
                     },
                     {
-                        text: '[200,250)万',
-                        value: '200-250',
+                        text: '(220,250]万',
+                        value: '220-250',
                     },
                     {
-                        text: '[250,300)万',
+                        text: '(250,300]万',
                         value: '250-300',
                     },
                     {
-                        text: '[300,350)万',
+                        text: '(300,350]万',
                         value: '300-350',
                     },
                     {
-                        text: '[350,400)万',
+                        text: '(350,400]万',
                         value: '350-400',
                     },
                 ],
                 onFilter: (value, record) => {
                     const minValue = value.split("-")[0];
                     const maxValue = value.split("-")[1];
-                    return (record.maxTotalPrice - minValue >= 0) && (record.maxTotalPrice - maxValue < 0);
+                    return (record.maxTotalPrice - minValue > 0) && (record.maxTotalPrice - maxValue <= 0);
                 }
             },
             {
@@ -500,42 +500,42 @@ class CommunityList extends React.PureComponent {
                 sorter: (a, b) => a.minTotalPrice - b.minTotalPrice,
                 filters: [
                     {
-                        text: '[0,50)万',
-                        value: '0-50',
+                        text: '(0,160]万',
+                        value: '0-160',
                     },
                     {
-                        text: '[50,100)万',
-                        value: '50-100',
+                        text: '(160,180]万',
+                        value: '160-180',
                     },
                     {
-                        text: '[100,150)万',
-                        value: '100-150',
+                        text: '(180,200]万',
+                        value: '180-200',
                     },
                     {
-                        text: '[150,200)万',
-                        value: '150-200',
+                        text: '(200,220]万',
+                        value: '200-220',
                     },
                     {
-                        text: '[200,250)万',
-                        value: '200-250',
+                        text: '(220,250]万',
+                        value: '220-250',
                     },
                     {
-                        text: '[250,300)万',
+                        text: '(250,300]万',
                         value: '250-300',
                     },
                     {
-                        text: '[300,350)万',
+                        text: '(300,350]万',
                         value: '300-350',
                     },
                     {
-                        text: '[350,400)万',
+                        text: '(350,400]万',
                         value: '350-400',
                     },
                 ],
                 onFilter: (value, record) => {
                     const minValue = value.split("-")[0];
                     const maxValue = value.split("-")[1];
-                    return (record.minTotalPrice - minValue >= 0) && (record.minTotalPrice - maxValue < 0);
+                    return (record.minTotalPrice - minValue > 0) && (record.minTotalPrice - maxValue <= 0);
                 }
             },
             {
