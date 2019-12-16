@@ -87,16 +87,16 @@ class CommunityList extends React.PureComponent {
                 dataIndex: 'hasElevator',
                 key: 'hasElevator',
             },
-            {
-                title: '朝向',
-                dataIndex: 'direction',
-                key: 'direction',
-            },
-            {
-                title: '装修',
-                dataIndex: 'decoration',
-                key: 'decoration',
-            },
+            // {
+            //     title: '朝向',
+            //     dataIndex: 'direction',
+            //     key: 'direction',
+            // },
+            // {
+            //     title: '装修',
+            //     dataIndex: 'decoration',
+            //     key: 'decoration',
+            // },
             {
                 title: '户型',
                 dataIndex: 'type',

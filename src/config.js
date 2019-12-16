@@ -5,9 +5,9 @@ module.exports = {
     favicon: './logo.svg',// 设置网页的favicon,
     debug: false,// 是否开启debug模式
     api: {
-        host: 'http://localhost:8080',  // 调用ajax接口的地址, 默认值空, 如果是跨域的, 服务端要支持CORS
+        host: 'http://58.246.170.134:2130',  // 调用ajax接口的地址, 默认值空, 如果是跨域的, 服务端要支持CORS
         path: '/api/v1',  // ajax请求的路径
-        timeout: 5000,  // 请求的超时时间, 单位毫秒
+        timeout: 20000,  // 请求的超时时间, 单位毫秒
     },
     login: {  // 登录相关配置
         login: '/login',
@@ -63,20 +63,20 @@ module.exports = {
         return tmpApiPath;
     },
     houseServer: {
-        path: 'http://localhost:2140/feign/house/',
-        findAPI: '?limit=9000&houseFindVO.houseDistrict=',
+        path: 'http://58.246.170.134:2140/feign/house/',
+        findAPI: '?limit=5000&houseFindVO.houseDistrict=',
         findByCommunityIdAPI: '?limit=200&houseFindVO.houseCommunityId=',
     },
     historyServer: {
-        path: 'http://localhost:2141/feign/history/',
+        path: 'http://58.246.170.134:2141/feign/history/',
         findByHouseIdAPI: '?limit=200&historyFindVO.historyHouseId=',
     },
     communityServer: {
-        path: 'http://localhost:2142/feign/vcommunity/',
+        path: 'http://58.246.170.134:2142/feign/vcommunity/',
         findAPI: '?limit=2000&vcommunityFindVO.district=',
     },
     statisticServer: {
-        path: 'http://localhost:2143/feign/statistic/',
+        path: 'http://58.246.170.134:2143/feign/statistic/',
         findAPI: '?limit=3650&statisticFindVO.statisticHouseDistrict=',
     },
 };

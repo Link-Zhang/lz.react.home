@@ -5,7 +5,7 @@ import {Spin, Layout, message} from 'antd';
 import Bread from '../Bread';
 import Foot from '../Foot';
 import Head from '../Head';
-// import Login from '../Login';
+import Login from '../Login';
 import Sidebar from '../Side';
 import ajax from '../../utils/ajax';
 import {loginSuccessActionCreator} from '../../acirs/User';
@@ -79,10 +79,10 @@ class App extends React.Component {
     render() {
         if (!this.props.loading) {
             //加载成功
-            // if (!this.props.authorization || !this.props.username || this.props.username === '未登录') {
-            //     //需要登录
-            //     return <Login/>
-            // }
+            if (!this.props.authorization || !this.props.username || this.props.username === '未登录') {
+                //需要登录
+                return <Login/>
+            }
             return (
                 <Layout style={{minHeight: '100vh'}}>
                     <Sidebar/>
