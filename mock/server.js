@@ -9,9 +9,11 @@ const server = restify.createServer({
 server.use(restify.plugins.bodyParser());
 
 const cors = corsMiddleware({
-    origins: ['http://localhost:2180', 'http://localhost:3000','http://58.246.170.134:2180','http://58.246.170.134:3000'],
-    credentials: true,
-});
+        origins: ['http://localhost:2130', 'http://localhost:2180', 'http://localhost:3000', 'http://10.30.14.134:2130', 'http://10.30.14.134:2180', 'http://10.30.14.134:3000'],
+        credentials:
+            true,
+    })
+;
 server.pre(cors.preflight);
 server.use(cors.actual);
 

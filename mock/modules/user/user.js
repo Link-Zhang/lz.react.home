@@ -18,7 +18,7 @@ module.exports = function (server) {
             const username = req.body.username;
             const content = {username: username};
             const token = jwt.sign(content, secret, {
-                expiresIn: 60 * 30
+                expiresIn: 60 * 60 * 24
             });
             loggedUser.add(username);
             console.log("---------------------------------");
