@@ -64,16 +64,16 @@ module.exports = {
     },
     houseServer: {
         path: 'http://localhost:2140/feign/house/',
-        findAPI: '?limit=5000&houseFindVO.houseDistrict=',
-        findByCommunityIdAPI: '?limit=200&houseFindVO.houseCommunityId=',
+        findAPI: '?limit=8000&houseFindVO.houseDistrict=',
+        findHistoryByHouseIdAPI: '/history',
     },
     historyServer: {
         path: 'http://localhost:2141/feign/history/',
-        findByHouseIdAPI: '?limit=200&historyFindVO.historyHouseId=',
     },
     communityServer: {
         path: 'http://localhost:2142/feign/vcommunity/',
         findAPI: '?limit=2000&vcommunityFindVO.district=',
+        findHouseByCommunityIdAPI: '/house',
     },
     statisticServer: {
         path: 'http://localhost:2143/feign/statistic/',

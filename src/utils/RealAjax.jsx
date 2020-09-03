@@ -67,11 +67,11 @@ class Ajax {
     }
 
     houseByCommunityId(communityId) {
-        return this.get(`${globalConfig.houseServer.path}${globalConfig.houseServer.findByCommunityIdAPI}${communityId}`);
+        return this.get(`${globalConfig.communityServer.path}${communityId}${globalConfig.communityServer.findHouseByCommunityIdAPI}`);
     }
 
     historyByHouseId(houseId) {
-        return this.get(`${globalConfig.historyServer.path}${globalConfig.historyServer.findByHouseIdAPI}${houseId}`);
+        return this.get(`${globalConfig.houseServer.path}${houseId}${globalConfig.houseServer.findHistoryByHouseIdAPI}`);
     }
 }
 

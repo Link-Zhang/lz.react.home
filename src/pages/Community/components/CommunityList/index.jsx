@@ -78,26 +78,6 @@ class CommunityList extends React.PureComponent {
                                              href={`${record.url}`}>{text}</a>,
             },
             {
-                title: '楼层',
-                dataIndex: 'floor',
-                key: 'floor',
-            },
-            {
-                title: '电梯',
-                dataIndex: 'hasElevator',
-                key: 'hasElevator',
-            },
-            // {
-            //     title: '朝向',
-            //     dataIndex: 'direction',
-            //     key: 'direction',
-            // },
-            // {
-            //     title: '装修',
-            //     dataIndex: 'decoration',
-            //     key: 'decoration',
-            // },
-            {
                 title: '户型',
                 dataIndex: 'type',
                 key: 'type',
@@ -211,11 +191,6 @@ class CommunityList extends React.PureComponent {
                 title: '单价',
                 dataIndex: 'unitPrice',
                 key: 'unitPrice',
-            },
-            {
-                title: '抵押',
-                dataIndex: 'mortgage',
-                key: 'mortgage',
             },
         ];
         if (expanded) {
